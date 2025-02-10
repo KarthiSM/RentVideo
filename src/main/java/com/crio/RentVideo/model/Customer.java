@@ -3,34 +3,30 @@ package com.crio.RentVideo.model;
 import java.util.Collection;
 import java.util.List;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.crio.RentVideo.model.enums.Role;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
-@Entity
-@Table(name = "Customer")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Document(collection = "Customer")
 
 public class Customer implements UserDetails {
 
     @Id
-    @GeneratedValue
-    private Long id;
+    private String id;
     private String firstname;
     private String lastname;
     private String email;
